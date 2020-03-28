@@ -8,5 +8,7 @@ import spock.lang.Unroll
 class KakafkaConsumerSampleApplicationSpecs extends Specification {
     @Unroll
     def contextLoads() {
+        expect:
+        true
     }
 }
