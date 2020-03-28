@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class KakafkaConsumerSampleApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(KakafkaConsumerSampleApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(KakafkaConsumerSampleApplication.class, args);
+    }
 
 }

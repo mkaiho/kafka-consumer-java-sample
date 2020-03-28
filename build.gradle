@@ -1,7 +1,8 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.5.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'groovy'
 }
 
 group = 'com.mkaiho.sample.kafkaconsumer'
@@ -9,16 +10,27 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '13'
 
 repositories {
-	mavenCentral()
+    jcenter()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.kafka:spring-kafka:2.4.4.RELEASE'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    testImplementation 'org.codehaus.groovy:groovy-all:3.0.2'
+    testImplementation platform('org.spockframework:spock-bom:2.0-M2-groovy-2.5')
+    testImplementation 'org.spockframework:spock-core'
+    testImplementation 'org.spockframework:spock-spring:2.0-M2-groovy-2.5'
+    testImplementation 'org.hamcrest:hamcrest-core:2.2'
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
+    testLogging {
+        events 'passed' , 'skipped' , 'failed'
+    }
 }
